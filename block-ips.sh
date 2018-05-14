@@ -1,6 +1,4 @@
 #! /bin/bash
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
-export PATH
 #Block-IPs-from-countries
 #https://github.com/iiiiiii1/Block-IPs-from-countries
 
