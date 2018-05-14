@@ -16,7 +16,7 @@ root_need(){
 }
 
 #封禁ip
-block_ipset {
+block_ipset(){
 check_ipset
 #添加ipset规则
 echo -e "${Green}请输入需要封禁的国家代码，如cn(中国)，注意字母为小写！${Font}"
@@ -44,7 +44,7 @@ echo -e "${Green}所指定国家的ip封禁成功！${Font}"
 }
 
 #解封ip
-unblock_ipset {
+unblock_ipset(){
 echo -e "${Green}请输入需要解封的国家代码，如cn(中国)，注意字母为小写！${Font}"
 read -p "请输入国家代码:" GEOIP
 #判断是否有此国家的规则
@@ -61,7 +61,7 @@ lookuplist=`ipset list | grep "Name:" | grep $GEOIP"ip"`
 }
 
 #查看封禁列表
-block_list {
+block_list(){
 	iptables -L | grep match-set
 }
 
