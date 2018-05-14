@@ -20,7 +20,7 @@ check_ipset
 echo -e "${Green}请输入需要封禁的国家代码，如cn(中国)，注意字母为小写！${Font}"
 read -p "请输入国家代码:" GEOIP
 echo -e "${Green}正在下载IPs data...${Font}"
-wget -P /tmp http://www.ipdeny.com/ipblocks/data/countries/$GEOIP.zone 2> /dev/null
+wget -P /tmp "http://www.ipdeny.com/ipblocks/data/countries/$GEOIP.zone" 2> /dev/null
 #检查下载是否成功
     if [ -f "/tmp/"$GEOIP".zone" ]; then
 	 echo -e "${Green}IPs data下载成功！${Font}"
