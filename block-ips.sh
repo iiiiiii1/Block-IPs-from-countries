@@ -37,7 +37,8 @@ echo -e "${Green}规则添加成功，即将开始封禁ip！${Font}"
 #开始封禁
 iptables -I INPUT -p tcp -m set --match-set "$GEOIP" src -j DROP
 iptables -I INPUT -p udp -m set --match-set "$GEOIP" src -j DROP
-echo -e "${Green}所指定国家($GEOIP)的ip封禁成功！${Font}"
+ipset destroy $GEOIP
+echo -e "${Green}所指定国家($GEOIP)的ip封禁成功，并删除其对应的规则！${Font}"
 }
 
 #解封ip
