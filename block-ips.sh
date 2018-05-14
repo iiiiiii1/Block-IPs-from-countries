@@ -111,20 +111,20 @@ echo -e "———————————————————————�
 read -p " 请输入数字 [1-3]:" num
 case "$num" in
     1)
-	  block_ipset
-	  ;;
-	  2)
-	  unblock_ipset
-	  ;;
-	  3)
-	  block_list
-	  ;;
-	  *)
-	  clear
-	  echo -e "${Error}:请输入正确数字 [1-3]"
-	  sleep 5s
-	  main
-	  ;;
+    block_ipset
+    ;;
+    2)
+    unblock_ipset
+    ;;
+    3)
+    block_list
+    ;;
+    *)
+    clear
+    echo -e "${Green}脚本退出，请输入正确数字 [1-3]${Font}"
+    sleep 5s
+    main
+    ;;
     esac
 }
 main
