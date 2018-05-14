@@ -13,7 +13,7 @@ root_need(){
     fi
 }
 
-# 封禁ip
+#封禁ip
 block_ipset {
 check_ipset
 #添加ipset规则
@@ -41,7 +41,6 @@ iptables -I INPUT -p udp -m set --match-set $GEOIP"ip" src -j DROP
 echo -e "${Green}所指定国家的ip封禁成功！${Font}"
 }
 
-
 #解封ip
 unblock_ipset {
 echo -e "${Green}请输入需要解封的国家代码，如cn(中国)，注意字母为小写！${Font}"
@@ -63,7 +62,6 @@ lookuplist=`ipset list | grep "Name:" | grep $GEOIP"ip"`
 block_list {
 	iptables -L | grep match-set
 }
-
 
 #检查系统版本
 check_release(){
