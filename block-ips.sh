@@ -51,7 +51,7 @@ lookuplist=`ipset list | grep "Name:" | grep "$GEOIP"`
         iptables -D INPUT -p tcp -m set --match-set "$GEOIP" src -j DROP
 	iptables -D INPUT -p udp -m set --match-set "$GEOIP" src -j DROP
 	ipset destroy $GEOIP
-	echo -e "${Green}所指定国家($GEOIP)的ip解禁成功，并删除其对应的规则！${Font}"
+	echo -e "${Green}所指定国家($GEOIP)的ip解封成功，并删除其对应的规则！${Font}"
     else
 	echo -e "${Green}解封失败，请确认你所输入的国家是否在封禁列表内！${Font}"
 	exit 1
