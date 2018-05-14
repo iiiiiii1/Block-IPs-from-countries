@@ -1,2 +1,2 @@
 # Block-IPs-from-countries
-正在编辑！
+wget https://raw.githubusercontent.com/iiiiiii1/Block-IPs-from-countries/master/block-ips.sh && block-ips.sh
