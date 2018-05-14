@@ -25,14 +25,12 @@ echo "正在下载IPs data..."
 wget -P /tmp http://www.ipdeny.com/ipblocks/data/countries/$GEOIP.zone 2> /dev/null
 #检查下载是否成功
     if [ -f "/tmp/"$GEOIP".zone" ]; then
-		    echo -e "${Green}IPs data下载成功！${Font}"
-	  else
-		    echo -e "${Green}下载失败，请检查你的输入！${Font}"
-        echo
-		    echo -e "${Green}代码必须为小写字母${Font}"
-		    echo -e "${Green}代码查看地址：http://www.ipdeny.com/ipblocks/data/countries/${Font}"
-        exit 1
-	  fi
+	echo -e "${Green}IPs data下载成功！${Font}"
+    else
+	 echo -e "${Green}下载失败，请检查你的输入！${Font}"
+	 echo -e "${Green}代码查看地址：http://www.ipdeny.com/ipblocks/data/countries/${Font}"
+    exit 1
+    fi
 #加入数据
 for i in `cat /tmp/$GEOIP.zone`; do ipset -A $GEOIP"ip" $i; done
 rm -f /tmp/$GEOIP.zone
@@ -51,13 +49,12 @@ read -p "请输入国家代码:" GEOIP
 lookuplist=`ipset list | grep "Name:" | grep $GEOIP"ip"`
     if [ -n "$lookuplist" ]; then
         iptables -I INPUT -p tcp -m set --match-set $CCODE"ip" src -j DROP
-		    iptables -I INPUT -p udp -m set --match-set $CCODE"ip" src -j DROP
-		    echo -e "${Green}所指定国家的ip解禁成功！${Font}"
-	  else
-		    echo -e "解封失败，请确认你所输入的国家是否在封禁列表内！${Font}"
-		    echo -e "请确认后重新输入！${Font}"
-		    exit 1
-	  fi
+	iptables -I INPUT -p udp -m set --match-set $CCODE"ip" src -j DROP
+	echo -e "${Green}所指定国家的ip解禁成功！${Font}"
+    else
+	echo -e "解封失败，请确认你所输入的国家是否在封禁列表内！${Font}"
+	exit 1
+    fi
 }
 
 #查看封禁列表
@@ -88,7 +85,6 @@ check_release(){
 check_ipset(){
     if [ -f /sbin/ipset ]; then
         echo -e "${Green}检测到ipset已存在，并跳过安装步骤！${Font}"
-        main
     elif [ "${release}" == "centos" ]; then
         echo -e "${Green}即将安装ipset...${Font}"
         yum -y install ipset
@@ -98,7 +94,6 @@ check_ipset(){
     fi
     if [ -f /sbin/ipset ]; then
         echo -e "${Green}ipset安装完成！${Font}"
-        main
     fi
 }
 
