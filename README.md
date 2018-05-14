@@ -6,6 +6,6 @@
     wget https://raw.githubusercontent.com/iiiiiii1/Block-IPs-from-countries/master/block-ips.sh
     chmod +x block-ips.sh
     ./block-ips.sh
-封禁`ip`时会要求你输入国家代码，代码查看：[点击进入][1]。记住后面的参数均为小写字母。比如`JAPAN (JP)`，我们就在后面用`jp`这个参数。
+封禁`ip`时会要求你输入国家代码，代码查看：[点击进入][1]。记住所需输入的参数均为小写字母。比如`JAPAN (JP)`，我们就使用`jp`这个参数。
 
   [1]: http://www.ipdeny.com/ipblocks
