@@ -116,7 +116,7 @@ case "$num" in
     *)
     clear
     echo -e "${Green}请输入正确数字 [1-3]${Font}"
-    sleep 5s
+    sleep 2s
     main
     ;;
     esac
