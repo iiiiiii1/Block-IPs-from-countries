@@ -30,13 +30,13 @@ wget -P /tmp http://www.ipdeny.com/ipblocks/data/countries/$GEOIP.zone 2> /dev/n
     exit 1
     fi
 #加入数据
-for i in $(cat /tmp/$GEOIP.zone ); do ipset -A $GEOIPip $i; done
+for i in $(cat /tmp/$GEOIP.zone ); do ipset -A $GEOIP $i; done
 rm -f /tmp/$GEOIP.zone
 echo "${Green}规则添加成功，即将开始封禁ip！${Font}"
 #开始封禁
-iptables -I INPUT -p tcp -m set --match-set "$GEOIPip" src -j DROP
-iptables -I INPUT -p udp -m set --match-set "$GEOIPip" src -j DROP
-echo -e "${Green}所指定国家的ip封禁成功！${Font}"
+iptables -I INPUT -p tcp -m set --match-set "$GEOIP" src -j DROP
+iptables -I INPUT -p udp -m set --match-set "$GEOIP" src -j DROP
+echo -e "${Green}所指定国家($GEOIP)的ip封禁成功！${Font}"
 }
 
 #解封ip
@@ -44,11 +44,11 @@ unblock_ipset(){
 echo -e "${Green}请输入需要解封的国家代码，如cn(中国)，注意字母为小写！${Font}"
 read -p "请输入国家代码:" GEOIP
 #判断是否有此国家的规则
-lookuplist=`ipset list | grep "Name:" | grep "$GEOIPip"`
+lookuplist=`ipset list | grep "Name:" | grep "$GEOIP"`
     if [ -n "$lookuplist" ]; then
-        iptables -D INPUT -p tcp -m set --match-set "$GEOIPip" src -j DROP
-	iptables -D INPUT -p udp -m set --match-set "$GEOIPip" src -j DROP
-	echo -e "${Green}所指定国家的ip解禁成功！${Font}"
+        iptables -D INPUT -p tcp -m set --match-set "$GEOIP" src -j DROP
+	iptables -D INPUT -p udp -m set --match-set "$GEOIP" src -j DROP
+	echo -e "${Green}所指定国家($GEOIP)的ip解禁成功！${Font}"
     else
 	echo -e "解封失败，请确认你所输入的国家是否在封禁列表内！${Font}"
 	exit 1
