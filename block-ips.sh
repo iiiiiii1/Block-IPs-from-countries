@@ -23,7 +23,7 @@ echo -e "${Green}正在下载IPs data...${Font}"
 wget -P /tmp http://www.ipdeny.com/ipblocks/data/countries/$GEOIP.zone 2> /dev/null
 #检查下载是否成功
     if [ -f "/tmp/"$GEOIP".zone" ]; then
-	echo -e "${Green}IPs data下载成功！${Font}"
+	 echo -e "${Green}IPs data下载成功！${Font}"
     else
 	 echo -e "${Green}下载失败，请检查你的输入！${Font}"
 	 echo -e "${Green}代码查看地址：http://www.ipdeny.com/ipblocks/data/countries/${Font}"
@@ -32,7 +32,7 @@ wget -P /tmp http://www.ipdeny.com/ipblocks/data/countries/$GEOIP.zone 2> /dev/n
 #加入数据
 for i in $(cat /tmp/$GEOIP.zone ); do ipset -A $GEOIP $i; done
 rm -f /tmp/$GEOIP.zone
-echo "${Green}规则添加成功，即将开始封禁ip！${Font}"
+echo -e "${Green}规则添加成功，即将开始封禁ip！${Font}"
 #开始封禁
 iptables -I INPUT -p tcp -m set --match-set "$GEOIP" src -j DROP
 iptables -I INPUT -p udp -m set --match-set "$GEOIP" src -j DROP
