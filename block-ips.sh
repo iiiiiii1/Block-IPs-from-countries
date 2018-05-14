@@ -115,7 +115,7 @@ case "$num" in
     ;;
     *)
     clear
-    echo -e "${Green}脚本退出，请输入正确数字 [1-3]${Font}"
+    echo -e "${Green}请输入正确数字 [1-3]${Font}"
     sleep 5s
     main
     ;;
