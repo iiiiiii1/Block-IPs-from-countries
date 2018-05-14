@@ -92,14 +92,14 @@ check_ipset(){
     elif [ "${release}" == "centos" ]; then
         echo -e "${Green}即将安装ipset...${Font}"
         yum -y install ipset
-    elif
+    else
         echo -e "${Green}即将安装ipset...${Font}"
         apt-get -y install ipset
-    else
+    fi
     if [ -f /sbin/ipset ]; then
         echo -e "${Green}ipset安装完成！${Font}"
         main
-fi
+    fi
 }
 
 #开始菜单
