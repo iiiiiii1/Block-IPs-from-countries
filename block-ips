@@ -105,12 +105,12 @@ main(){
 root_need
 check_release
 clear
-echo -e "————————————————————————"
+echo -e "————————————————————————————————————————————————"
 echo -e "${Green}Linux VPS一键屏蔽指定国家所有的IP访问${Font}"
 echo -e "${Green}1、封禁ip${Font}"
 echo -e "${Green}2、解封iP${Font}"
 echo -e "${Green}3、查看封禁列表${Font}"
-echo -e "————————————————————————"
+echo -e "————————————————————————————————————————————————"
 read -p " 请输入数字 [1-3]:" num
 case "$num" in
     1)
