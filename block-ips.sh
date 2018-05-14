@@ -1,6 +1,8 @@
-#!/bin/bash
-# Block-IPs-from-countries
-# https://github.com/iiiiiii1/Block-IPs-from-countries
+#! /bin/bash
+#Block-IPs-from-countries
+#https://github.com/iiiiiii1/Block-IPs-from-countries
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+export PATH
 
 Green="\033[32m"
 Font="\033[0m"
