@@ -8,4 +8,6 @@
     ./block-ips.sh
 封禁`ip`时会要求你输入国家代码，代码查看：[点击进入][1]。记住所需输入的参数均为小写字母。比如`JAPAN (JP)`，我们就使用`jp`这个参数。
 
+详细说明：https://www.moerats.com/archives/585/
+
   [1]: http://www.ipdeny.com/ipblocks
